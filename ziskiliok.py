@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import cherrypy
+from html import escape
 import sqlite3
 
 DB_STRING = 'data.sqlite3'
@@ -10,7 +11,7 @@ class Ziskiliok:
 	@cherrypy.expose
 	def index(self):
 		def make_entry(lang, content, time):
-			return '<div><time datetime="' + time + '">' + time + '</time><div lang="' + lang + '">' + content + '</div></div>'
+			return '<div><time datetime="' + time + '">' + time + '</time><div lang="' + lang + '">' + escape(content) + '</div></div>'
 
 		d = []
 		d.append('''<!DOCTYPE html>
@@ -103,7 +104,7 @@ body > div > div {
 	def post(self, lang, content):
 		with sqlite3.connect(DB_STRING) as con:
 			con.execute('INSERT INTO ziskiliok (lang, content) VALUES (?, ?)', (lang, content))
-		raise cherrypy.HTTPRedirect('/')
+		raise cherrypy.HTTPRedirect('../')
 
 def setup_database():
 	with sqlite3.connect(DB_STRING) as con:
