@@ -10,7 +10,7 @@ class Ziskiliok:
 	@cherrypy.expose
 	def index(self):
 		def make_entry(lang, content, time):
-			return f'<div><time datetime="{time}">{time}</time><div lang="{lang}">{content}</div></div>'
+			return '<div><time datetime="' + time + '">' + time + '</time><div lang="' + lang + '">' + content + '</div></div>'
 
 		d = []
 		d.append('''<!DOCTYPE html>
@@ -58,6 +58,7 @@ body > div > time {
 }
 body > div > div {
   margin: 1em 0;
+  white-space: pre-line;
 }
 .center {
   text-align: center;
