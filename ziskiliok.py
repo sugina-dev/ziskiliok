@@ -96,7 +96,7 @@ text-align: center;
 </select>
 </label>
 </p>
-<textarea type="text" name="content" minlength="40" required></textarea>
+<p><textarea type="text" name="content" minlength="180" required></textarea></p>
 <p class="center"><input type="submit" value="Po 上"/></p>
 </form>''')
 
