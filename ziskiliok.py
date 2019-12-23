@@ -11,14 +11,15 @@ class Ziskiliok:
 	@cherrypy.expose
 	def index(self, **kwargs):
 		lang = kwargs.get('lang')
+		user = kwargs.get('user')
 		content = kwargs.get('content')
 		if lang and content:
 			with sqlite3.connect(DB_STRING) as con:
-				con.execute('INSERT INTO ziskiliok (lang, content) VALUES (?, ?)', (lang, content.rstrip()))
+				con.execute('INSERT INTO ziskiliok (lang, user, content) VALUES (?, ?, ?)', (lang, user, content.rstrip()))
 			raise cherrypy.HTTPRedirect('.')
 		else:
-			def make_entry(lang, content, time):
-				return '<div><time datetime="' + time + '">' + time + '</time><pre class="message" lang="' + lang + '">' + escape(content) + '</pre></div>'
+			def make_entry(lang, user, content, time):
+				return '<div><span>' + user + ' - <time datetime="' + time + '">' + time + '</time></span><pre class="message" lang="' + lang + '">' + escape(content) + '</pre></div>'
 
 			d = []
 			d.append('''<!DOCTYPE html>
@@ -57,7 +58,7 @@ background-color: lightblue;
 margin: 1em 0;
 padding: 0 1em;
 }
-body > div > time {
+body > div > span {
 color: #444;
 display: block;
 font-size: 80%;
@@ -96,13 +97,22 @@ text-align: center;
 </select>
 </label>
 </p>
+<p>
+<label>
+用户：
+<select id="user" name="user">
+<option value="Chr">Chr</option>
+<option value="Tre">Tre</option>
+</select>
+</label>
+</p>
 <p><textarea type="text" name="content" minlength="180" required></textarea></p>
 <p class="center"><input type="submit" value="Po 上"/></p>
 </form>''')
 
 			with sqlite3.connect(DB_STRING) as con:
-				for lang, content, time in con.execute("SELECT lang, content, strftime('%Y-%m-%dT%H:%M:%fZ', time) FROM ziskiliok ORDER BY id DESC"):
-					d.append(make_entry(lang, content, time))
+				for lang, user, content, time in con.execute("SELECT lang, user, content, strftime('%Y-%m-%dT%H:%M:%fZ', time) FROM ziskiliok ORDER BY id DESC"):
+					d.append(make_entry(lang, user, content, time))
 
 			d.append('''</body>
 <script>[...document.getElementsByTagName('time')].map(x => {
@@ -119,6 +129,7 @@ def setup_database():
 		con.execute('''CREATE TABLE IF NOT EXISTS ziskiliok
 ( 'id' INTEGER PRIMARY KEY
 , 'lang' TEXT NOT NULL
+, 'user' TEXT NOT NULL
 , 'content' TEXT NOT NULL
 , 'time' TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );''')
