@@ -23,7 +23,7 @@ class Ziskiliok:
 
 			d = []
 			d.append('''<!DOCTYPE html>
-<html>
+<html lang="zh-HK">
 <head>
 <title>日記錄</title>
 <meta charset="utf-8"/>
@@ -67,6 +67,7 @@ text-align: right;
 }
 .message {
 font-family: inherit;
+line-height: 1.4;
 margin: 1em 0;
 white-space: pre-wrap;
 }
@@ -81,29 +82,23 @@ text-align: center;
 <p>
 <label>
 語言代碼：
-<select id="lang" name="lang">
-<option value="zh-Hant-HK-x-shn">漢語-繁體中文-湫霧市 (zh-Hant-HK-x-shn)</option>
-<option value="zh-Hans-HK-x-shn">漢語-簡體中文-湫霧市 (zh-Hans-HK-x-shn)</option>
-<option value="cmn">普通話 (cmn)</option>
-<option value="yue">粵語 (yue)</option>
-<option value="ja-Jpan-JP">日語-日文-日本 (ja-Jpan-JP)</option>
-<option value="ko-KR">韓國語-韓國 (ko-KR)</option>
-<option value="vi-Hani-VN">越南語-喃字-越南 (vi-Hani-VN)</option>
-<option value="en-HK">英語-香港 (en-HK)</option>
-<option value="de">德語 (de)</option>
+<select id="lang" name="lang" lang="en-HK">
+<option value="zh-Hant-x-shn">湫霧漢語 (zh-Hant-x-shn)</option>
+<option value="cmn-Hant">普通話繁體字 (cmn-Hant)</option>
+<option value="yue-HK">香港粵語 (yue-HK)</option>
+<option value="ja">日語 (ja)</option>
+<option value="ko-KR">韓國韓語 (ko-KR)</option>
+<option value="en-HK">香港英語 (en-HK)</option>
+<option value="de-DE">德國德語 (de-DE)</option>
 <option value="ga">愛爾蘭語 (ga)</option>
-<option value="nb">書面挪威語 (nb)</option>
-<option value="nn">新挪威語 (nn)</option>
 </select>
 </label>
 </p>
 <p>
 <label>
 用户：
-<select id="user" name="user">
-<option value="Chr">Chr</option>
-<option value="Tre">Tre</option>
-</select>
+<label><input type="radio" name="user" value="Ayaka" checked> <span lang="en-HK">Ayaka</span></label>
+<label><input type="radio" name="user" value="Treytrox"> <span lang="en-HK">Treytrox</span></label>
 </label>
 </p>
 <p><textarea type="text" name="content" minlength="180" required></textarea></p>
