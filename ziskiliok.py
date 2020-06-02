@@ -83,22 +83,20 @@ text-align: center;
 <label>
 語言代碼：
 <select id="lang" name="lang" lang="en-HK">
-<option value="zh-Hant-x-shn">湫霧漢語 (zh-Hant-x-shn)</option>
-<option value="cmn-Hant">普通話繁體字 (cmn-Hant)</option>
-<option value="yue-HK">香港粵語 (yue-HK)</option>
+<option value="cmn-HK">官話 (cmn-HK)</option>
+<option value="yue-HK">粵語 (yue-HK)</option>
 <option value="ja">日語 (ja)</option>
-<option value="ko-KR">韓國韓語 (ko-KR)</option>
-<option value="en-HK">香港英語 (en-HK)</option>
-<option value="de-DE">德國德語 (de-DE)</option>
-<option value="ga">愛爾蘭語 (ga)</option>
+<option value="ko-KR">韓語 (ko-KR)</option>
+<option value="en">英語 (HK)</option>
+<option value="de">德語 (DE)</option>
 </select>
 </label>
 </p>
 <p>
 <label>
 用户：
-<label><input type="radio" name="user" value="Ayaka" checked> <span lang="en-HK">Ayaka</span></label>
-<label><input type="radio" name="user" value="Treytrox"> <span lang="en-HK">Treytrox</span></label>
+<label><input type="radio" name="user" value="User1" checked> <span lang="en-HK">User1</span></label>
+<label><input type="radio" name="user" value="User2"> <span lang="en-HK">User2</span></label>
 </label>
 </p>
 <p><textarea type="text" name="content" minlength="180" required></textarea></p>
