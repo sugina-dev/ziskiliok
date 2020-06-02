@@ -87,8 +87,8 @@ text-align: center;
 <option value="yue-HK">粵語 (yue-HK)</option>
 <option value="ja">日語 (ja)</option>
 <option value="ko-KR">韓語 (ko-KR)</option>
-<option value="en">英語 (HK)</option>
-<option value="de">德語 (DE)</option>
+<option value="en">英語 (en)</option>
+<option value="de">德語 (de)</option>
 </select>
 </label>
 </p>
